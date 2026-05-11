@@ -100,3 +100,9 @@ faf_dna:
   birth_certificate: FAF-2026-XAIFAFRA-WXGD
   birth_date: 2026-01-02T18:46:12.970Z
   current_score: 24
+
+# About Repo declaration — non-app, displays source's score
+app_type: about
+about:
+  represents: Wolfe-Jam/xai-faf-rag
+  source_score: 100
