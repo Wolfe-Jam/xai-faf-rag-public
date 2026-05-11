@@ -1,0 +1,53 @@
+[package]
+name = "xai-faf-rag"
+version = "0.1.0"
+edition = "2021"
+description = "Cache-first RAG using Grok Collections + LAZY-RAG (Rust implementation)"
+license = "Proprietary"
+authors = ["Wolfe-Jam"]
+
+[lib]
+name = "xai_faf_rag"
+path = "src/lib.rs"
+
+[[bin]]
+name = "xai-faf-rag"
+path = "src/main.rs"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# HTTP client
+reqwest = { version = "0.12", features = ["json", "multipart"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Hashing for cache keys
+sha2 = "0.10"
+hex = "0.4"
+
+# Error handling
+thiserror = "1"
+anyhow = "1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Environment variables
+dotenvy = "0.15"
+
+[dev-dependencies]
+tokio-test = "0.4"
+wiremock = "0.6"
+
+[features]
+default = []
+wasm = []  # Future WASM target support

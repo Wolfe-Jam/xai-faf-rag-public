@@ -1,53 +1,129 @@
-<!-- faf: xai-faf-rag-public | markdown | doc | Public About Repo for FAF RAG / LazyRAG — Cache-first RAG using xAI Grok Collections + LAZY-RAG pattern. Source code private at Wolfe-Jam/xai-faf-rag. -->
+<!-- faf: xai-faf-rag-public | markdown | doc | Public About Repo for FAF RAG / LazyRAG — source code private at Wolfe-Jam/xai-faf-rag. -->
 <!-- faf: doc=readme | canonical=project.faf | family=FAF | private_source=Wolfe-Jam/xai-faf-rag -->
-
-# FAF RAG / LazyRAG
 
 [![FAF](https://mcpaas.live/badge/Wolfe-Jam/xai-faf-rag-public.svg)](https://builder.faf.one)
 [![IANA Registered](https://img.shields.io/badge/IANA-application%2Fvnd.faf%2Byaml-blue)](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-orange)](LICENSE)
 
-**Cache-first RAG using xAI Grok Collections + LAZY-RAG pattern**
+> 📖 **Public About Repo** — this is the public face of `Wolfe-Jam/xai-faf-rag` (source private). README, docs, project.faf — no source code. Same shape as Anthropic's [`claude-code`](https://github.com/anthropics/claude-code) repo: public face, private engine.
 
-Hybrid RAG system combining LAZY-RAG caching layer with Grok Collections
+# xai-faf-rag
 
----
+Cache-first RAG using Grok Collections + LAZY-RAG caching.
 
-## Public About Repo
+## Overview
 
-This is the **public About Repo** for **FAF RAG / LazyRAG**. Source code stays private at `Wolfe-Jam/xai-faf-rag`.
+Hybrid RAG system combining LAZY-RAG caching layer with Grok Collections native RAG. Uploads .faf files to Collections, provides cache-first retrieval, and integrates with Grok chat.
 
-| What's here | What's not |
-|---|---|
-| `README.md` — public description, integration docs, links | Source code |
-| `project.faf` — IANA-registered AI context (FAF-scorable at [builder.faf.one](https://builder.faf.one)) | Internal implementation details |
-| `LICENSE` — Apache 2.0 for public-facing artifacts | Build/CI internals, secrets, KV bindings |
+```
+Query
+  |
+  v
+LAZY-RAG Cache (0.003ms, FREE)
+  |-- HIT (60-78%) --> Return immediately
+  |-- MISS --> Grok Collections API ($2.50/1K searches)
+                    |
+                    v
+               Cache result --> Return
+```
 
-This follows the **private source / public about** pattern — same shape as Anthropic's public `claude-code` repo (docs, examples, install) vs the private Claude Code source. Lets FAF RAG / LazyRAG earn a verifiable FAF badge that the public can score, without exposing the engine.
+## Installation
 
----
+```bash
+pip install xai-sdk --upgrade  # v1.4.0+ required
+```
 
-## What FAF RAG / LazyRAG is
+## Quick Start
 
-Cache-first RAG using xAI Grok Collections + LAZY-RAG pattern
+```python
+from src.integrator import XAIFafRag
 
-Part of the **FAF Family** — the IANA-registered Foundational Context Layer for AI. `.faf` is the format ([`application/vnd.faf+yaml`](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)), and FAF RAG / LazyRAG is one of the products that builds on it.
+# Set environment variables
+# XAI_API_KEY - for reads/search
+# XAI_MANAGEMENT_API_KEY - for writes/upload
 
----
+# Initialize
+integrator = XAIFafRag()
 
-## Links
+# Upload .faf and supporting docs
+integrator.sync_faf("project.faf", supporting=["docs.pdf"])
 
-- **FAF brand:** [faf.one](https://faf.one)
-- **Score any repo:** [builder.faf.one](https://builder.faf.one)
-- **Standard:** [IANA application/vnd.faf+yaml](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)
-- **FAF CLI:** [npm faf-cli](https://www.npmjs.com/package/faf-cli)
+# Search directly
+results = integrator.search("project constraints")
 
----
+# RAG-enhanced chat (Grok retrieves autonomously)
+response = integrator.query("What are the project goals?")
+print(response)
+```
+
+## API Reference
+
+### XAIFafRag
+
+```python
+XAIFafRag(
+    api_key=None,              # XAI_API_KEY env var
+    management_api_key=None,   # XAI_MANAGEMENT_API_KEY env var
+    collection_name=None,      # Default: "FAF Elite Palace"
+    enable_cache=True          # LAZY-RAG cache layer
+)
+```
+
+#### Methods
+
+| Method | Description |
+|--------|-------------|
+| `sync_faf(faf_path, supporting=[])` | Upload .faf and supporting files |
+| `search(query, num_results=5, retrieval_mode="hybrid")` | Direct collection search |
+| `query(question, model=None, system_prompt=None)` | RAG-enhanced chat |
+| `clear_cache()` | Clear the in-memory cache |
+| `cache_stats()` | Get cache statistics |
+
+#### Retrieval Modes
+
+- `hybrid` (recommended) - Combined semantic + keyword
+- `semantic` - Embedding-based similarity
+- `keyword` - Traditional keyword matching
+
+## Architecture
+
+7-Layer xAI-FAF-RAG Stack:
+
+| Layer | Component | Purpose |
+|-------|-----------|---------|
+| 1 | Authentication | Dual key (api_key + management_api_key) |
+| 2 | Persistent Context | project.faf (IANA YAML) |
+| 3 | Knowledge Base | Grok Collections (native RAG) |
+| 4 | Sync & Healing | Bi-directional delta sync |
+| 5 | Agent Orchestration | collections_search tool-calling |
+| 6 | Security | Offline-first, E2E encryption |
+| 7 | Scale | Stateless MCP, edge execution |
+
+## Environment Variables
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `XAI_API_KEY` | Yes | API key for reads/search |
+| `XAI_MANAGEMENT_API_KEY` | Yes | API key for writes/upload |
+
+## Requirements
+
+- Python 3.10+
+- xai-sdk v1.4.0+
+
+## Testing
+
+```bash
+python -m pytest tests/ -v
+python -m pytest tests/ --cov=src  # With coverage
+```
+
+## Value Proposition
+
+- **Cost Reduction**: 60-78% fewer API calls via caching
+- **Speed**: 0.003ms cache hits vs API latency
+- **Quality**: .faf structured context = better retrieval
+- **Cross-platform**: Cache layer works with any backend
 
 ## License
 
-Apache 2.0 — for the public-facing artifacts in this repo. Source code (private) is separately licensed.
-
-**FAF defines. MD instructs. AI codes.**
-
-*format | driven 🏎️⚡️*
+Proprietary - Do not publish.
