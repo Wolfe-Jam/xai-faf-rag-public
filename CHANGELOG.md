@@ -1,14 +1,17 @@
 # Changelog
 
-All notable public-facing changes to **FAF RAG / LazyRAG** will be documented in this file. This About Repo tracks the public release history; internal commits live in the private source repo at `Wolfe-Jam/xai-faf-rag`.
+Public-facing notes for this About repo. Engine commits live in private `Wolfe-Jam/xai-faf-rag`.
 
-## [About Repo initialized] - 2026-05-11
+## [About strip] — 2026-08-15
 
-Public About Repo created per the FAF `private source / public about` pattern. Contains:
+Door, not product. About-only tree.
 
-- `README.md` — public description
-- `project.faf` — IANA-registered AI context
-- LICENSE — for public artifacts
-- Cherry-picked documentation
+- README rewritten: what / why / complementary. No install-from-source. No hit-rate claims.
+- LICENSE (MIT) added.
+- Contact is `team@faf.one`.
+- Removed rust/, web/, tests/, pitch, and demo scripts from the public face.
+- Prior tree archived as `archive/about-pre-strip`.
 
-Source code remains private at `Wolfe-Jam/xai-faf-rag`.
+## [About Repo initialized] — 2026-05-11
+
+Public About created. Source remains private at `Wolfe-Jam/xai-faf-rag`.
