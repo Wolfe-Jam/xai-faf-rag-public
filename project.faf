@@ -1,6 +1,5 @@
 faf_version: 2.5.2
 generated: 2026-08-16T06:10:00.000Z
-app_type: about
 project:
   name: xai-faf-rag-public
   goal: Public about repo for xai-faf-rag. Puts .faf on Grok Collections.
