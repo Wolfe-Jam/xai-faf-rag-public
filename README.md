@@ -14,7 +14,7 @@ Puts IANA-registered `.faf` on Grok Collections. Cache-first in front of that st
 
 Sits beside any RAG — whole-section retrieval from the file; the store stays theirs.
 
-**Home:** [lazyrag.one](https://lazyrag.one) · [faf.one](https://faf.one)  
+**Home:** [lazyrag.faf.one](https://lazyrag.faf.one) · [faf.one](https://faf.one)  
 **Contact:** [team@faf.one](mailto:team@faf.one)
 
 ## Citation
