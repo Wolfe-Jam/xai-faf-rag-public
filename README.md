@@ -10,11 +10,11 @@
 
 Public about repo for [`Wolfe-Jam/xai-faf-rag`](https://github.com/Wolfe-Jam/xai-faf-rag) (source private).
 
-Puts IANA-registered `.faf` on Grok Collections. Cache-first in front of that store.
+Home is [lazyrag.faf.one](https://lazyrag.faf.one). Built for Grok Collections. Works with any RAG. Latest path built with Grok-Build.
 
-Sits beside any RAG — whole-section retrieval from the file; the store stays theirs.
+Puts IANA-registered `.faf` on the store. Whole-section retrieval from the file; the store stays theirs.
 
-**Home:** [lazyrag.faf.one](https://lazyrag.faf.one) · [faf.one](https://faf.one)  
+**Also:** [faf.one](https://faf.one)  
 **Contact:** [team@faf.one](mailto:team@faf.one)
 
 ## Citation
