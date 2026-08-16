@@ -12,6 +12,8 @@ Public about repo for [`Wolfe-Jam/xai-faf-rag`](https://github.com/Wolfe-Jam/xai
 
 Puts IANA-registered `.faf` on Grok Collections. Cache-first in front of that store.
 
+Sits beside any RAG — whole-section retrieval from the file; the store stays theirs.
+
 **Home:** [lazyrag.one](https://lazyrag.one) · [faf.one](https://faf.one)  
 **Contact:** [team@faf.one](mailto:team@faf.one)
 
