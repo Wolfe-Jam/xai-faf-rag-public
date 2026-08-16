@@ -4,7 +4,7 @@ Engine history: private `Wolfe-Jam/xai-faf-rag`.
 
 ## [2026-08-16]
 
-`app_type: about` + `about.source_score: 100` inherited from private `xai-faf-rag` (library, 12/12). Was mis-scored 33% as a 21-slot app.
+`app_type: about`. `about.source_score` is the private engine's `faf score` after `faf auto`: 50% (6/12). Not Trophy.
 
 ## [2026-08-15]
 

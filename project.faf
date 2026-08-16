@@ -15,10 +15,8 @@ human_context:
   what: About repo. Engine private at Wolfe-Jam/xai-faf-rag.
   why: Public face without publishing the engine
   where: github.com/Wolfe-Jam/xai-faf-rag-public
-  when: About opened 2026-05-11. Stripped to About-only 2026-08-15. Home lazyrag.faf.one 2026-08-16
-  how: README + project.faf + LICENSE. Score inherited from the private source.
 about:
   represents: Wolfe-Jam/xai-faf-rag
   source: private
   contact: team@faf.one
-  source_score: 100
+  source_score: 50
