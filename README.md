@@ -8,7 +8,7 @@
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18251362-FF6B35)](https://doi.org/10.5281/zenodo.18251362)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-Public about repo for [`Wolfe-Jam/xai-faf-rag`](https://github.com/Wolfe-Jam/xai-faf-rag) (source private).
+Public about repo for `Wolfe-Jam/xai-faf-rag` (source private).
 
 Home is [lazyrag.faf.one](https://lazyrag.faf.one). Built for Grok Collections. Works with any RAG. Latest path built with Grok-Build.
 
